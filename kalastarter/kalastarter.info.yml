@@ -1,0 +1,7 @@
+name: Kalastarter
+type: theme
+description: Starter theme for Kalabase
+core: 8.x
+
+# Defines the base theme
+base theme: kalabase
