@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Theme customizations.
+ */
+
+/**
+ * Implements hook_preprocess().
+ */
+function kalabase_preprocess(&$vars) {
+  // Add a global flag in all themes to indicate it is rendering in a Drupal
+  // context.
+  $vars['drupal'] = TRUE;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for block().
+ */
+function kalabase_theme_suggestions_block_alter(&$suggestions, $vars) {
+  // We want no wrappers on these menu blocks.
+  // TODO: how do we handle secondarynavigation block? This was custom to SOD.
+  $menu_blocks = [
+    'secondarynavigation',
+    'kalabase_main_menu',
+  ];
+
+  if (isset($vars['elements']['#id']) && in_array($vars['elements']['#id'], $menu_blocks)) {
+    $suggestions[] = 'block__clean';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for field().
+ */
+function kalabase_theme_suggestions_field_alter(&$suggestions, $vars) {
+  $element = &$vars['element'];
+
+  // Fields that should use the kalagraphs_field template.
+  $kalagraphs_field = [
+    'body',
+  ];
+  if (in_array($element['#field_name'], $kalagraphs_field)) {
+    $suggestions[] = 'kalagraphs_field';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu().
+ */
+function kalabase_preprocess_menu(&$vars) {
+  // Adding ids to the menu wrappers.
+  switch ($vars['menu_name']) {
+    case 'main':
+      $id = 'nav--primary';
+      break;
+
+    case 'secondary':
+      $id = 'nav--secondary';
+      break;
+  }
+
+  if (isset($id)) {
+    $vars['attributes']['id'] = $id;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for breadcrumb().
+ *
+ * Manipulates breadcrumb variables to match Kalastatic's.
+ */
+function kalabase_preprocess_breadcrumb(&$vars) {
+  $vars['title'] = array_pop($vars['breadcrumb'])['text'];
+}
