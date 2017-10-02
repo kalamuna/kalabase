@@ -1,0 +1,23 @@
+{
+  "name": "kalamuna/kalabase",
+  "type": "drupal-theme",
+  "description": "Base theme for Kalamuna projects.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "authors": [{
+    "name": "Josh \"Eaglelips Toughbear\" Walker",
+    "email": "josh@kalamuna.com",
+    "homepage": "https://kalamuna.com",
+    "role": "Maintainer"
+  }],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://packages.drupal.org/8"
+  }],
+  "homepage": "https://github.com/kalamuna/kalabase",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/kalamuna/kalabase/issues",
+    "source": "https://github.com/kalamuna/kalabase.git"
+  }
+}
