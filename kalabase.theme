@@ -6,6 +6,14 @@
  */
 
 /**
+ * Implements hook_page_attachments().
+ */
+function kalabase_page_attachments(array &$attachments) {
+  // Attach Kalastatic's library to all pages.
+  $attachments['#attached']['library'][] = 'kalastatic/css-js';
+}
+
+/**
  * Implements hook_theme_suggestions_HOOK_alter() for block().
  */
 function kalabase_theme_suggestions_block_alter(&$suggestions, $vars) {
