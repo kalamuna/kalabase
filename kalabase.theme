@@ -6,15 +6,6 @@
  */
 
 /**
- * Implements hook_preprocess().
- */
-function kalabase_preprocess(&$vars) {
-  // Add a global flag in all themes to indicate it is rendering in a Drupal
-  // context.
-  $vars['drupal'] = TRUE;
-}
-
-/**
  * Implements hook_theme_suggestions_HOOK_alter() for block().
  */
 function kalabase_theme_suggestions_block_alter(&$suggestions, $vars) {
