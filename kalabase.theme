@@ -8,7 +8,7 @@
 /**
  * Implements hook_page_attachments().
  */
-function kalabase_page_attachments(array &$attachments) {
+function kalabase_page_attachments_alter(array &$attachments) {
   // Attach Kalastatic's library to all pages.
   $attachments['#attached']['library'][] = 'kalastatic/css-js';
   
@@ -83,9 +83,9 @@ function _kalabase_favicons(array &$attachments) {
   // Pull the brand color from saved settings.
   $config = \Drupal::config('kalastatic.settings');
   $brand_color = $config->get('kalastatic_brand_color');
-
+  
   // Get kalastatic.yaml settings so we can find the images.
-  $settings = kalastatic_get_settings();
+  $settings = kalastatic_get_settings('yaml');
   $dest = '/' . $settings['destination'];
 
   // Set up tags for the favicons.
