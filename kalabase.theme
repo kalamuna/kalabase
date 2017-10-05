@@ -11,6 +11,9 @@
 function kalabase_page_attachments(array &$attachments) {
   // Attach Kalastatic's library to all pages.
   $attachments['#attached']['library'][] = 'kalastatic/css-js';
+  
+  // Add favicon tags to head.
+  _kalabase_favicons($attachments);
 }
 
 /**
@@ -71,14 +74,6 @@ function kalabase_preprocess_menu(&$vars) {
  */
 function kalabase_preprocess_breadcrumb(&$vars) {
   $vars['title'] = array_pop($vars['breadcrumb'])['text'];
-}
-
-/**
- * Implements hook_page_attachments().
- */
-function kalabase_page_attachments(array &$attachments) {
-  // Add favicon tags to head.
-  _kalabase_favicons($attachments);
 }
 
 /**
