@@ -14,7 +14,6 @@
     "url": "https://packages.drupal.org/8"
   }],
   "homepage": "https://github.com/kalamuna/kalabase",
-  "minimum-stability": "dev",
   "support": {
     "issues": "https://github.com/kalamuna/kalabase/issues",
     "source": "https://github.com/kalamuna/kalabase.git"
