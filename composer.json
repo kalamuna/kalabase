@@ -1,21 +1,21 @@
 {
-  "name": "kalamuna/kalabase",
-  "type": "drupal-theme",
-  "description": "Base theme for Kalamuna projects.",
-  "keywords": ["Drupal"],
-  "license": "GPL-2.0+",
-  "authors": [{
-    "name": "Josh \"Eaglelips Toughbear\" Walker",
-    "homepage": "https://www.drupal.org/u/sonictruth",
-    "role": "Maintainer"
-  }],
-  "repositories": [{
-    "type": "composer",
-    "url": "https://packages.drupal.org/8"
-  }],
-  "homepage": "https://github.com/kalamuna/kalabase",
-  "support": {
-    "issues": "https://github.com/kalamuna/kalabase/issues",
-    "source": "https://github.com/kalamuna/kalabase.git"
-  }
+    "name": "kalamuna/kalabase",
+    "type": "drupal-theme",
+    "description": "Base theme for Kalamuna projects.",
+    "keywords": ["Drupal"],
+    "license": "GPL-2.0+",
+    "authors": [{
+        "name": "Josh \"Eaglelips Toughbear\" Walker",
+        "homepage": "https://www.drupal.org/u/sonictruth",
+        "role": "Maintainer"
+    }],
+    "repositories": [{
+        "type": "composer",
+        "url": "https://packages.drupal.org/8"
+    }],
+    "homepage": "https://github.com/kalamuna/kalabase",
+    "support": {
+        "issues": "https://github.com/kalamuna/kalabase/issues",
+        "source": "https://github.com/kalamuna/kalabase.git"
+    }
 }
