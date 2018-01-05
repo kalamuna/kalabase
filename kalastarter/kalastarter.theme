@@ -5,4 +5,18 @@
  * Theme customizations.
  */
 
-// What are you staring at? GET CODING!
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for block().
+ */
+function kalastarter_theme_suggestions_block_alter(&$suggestions, $vars) {
+  // We want no wrappers on these menu blocks.
+  // NOTE: If this site has a secondary menu, add it to this array.
+  $menu_blocks = [
+    'kalastater_main_menu',
+    //'SECONDARYNAVBLOCK',
+  ];
+
+  if (isset($vars['elements']['#id']) && in_array($vars['elements']['#id'], $menu_blocks)) {
+    $suggestions[] = 'block__clean';
+  }
+}

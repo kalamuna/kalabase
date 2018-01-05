@@ -15,22 +15,6 @@ function kalabase_preprocess(&$vars) {
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for block().
- */
-function kalabase_theme_suggestions_block_alter(&$suggestions, $vars) {
-  // We want no wrappers on these menu blocks.
-  // TODO: how do we handle secondarynavigation block? This was custom to SOD.
-  $menu_blocks = [
-    'secondarynavigation',
-    'kalabase_main_menu',
-  ];
-
-  if (isset($vars['elements']['#id']) && in_array($vars['elements']['#id'], $menu_blocks)) {
-    $suggestions[] = 'block__clean';
-  }
-}
-
-/**
  * Implements hook_theme_suggestions_HOOK_alter() for field().
  */
 function kalabase_theme_suggestions_field_alter(&$suggestions, $vars) {
@@ -55,13 +39,28 @@ function kalabase_preprocess_menu(&$vars) {
       $id = 'nav--primary';
       break;
 
-    case 'secondary':
-      $id = 'nav--secondary';
-      break;
+    // Uncomment if using a secondary nav
+    // case 'SECONDARYNAVBLOCK':
+    //   $id = 'nav--secondary';
+    //   break;
   }
 
   if (isset($id)) {
     $vars['attributes']['id'] = $id;
+    $vars['attributes']['class'][] = 'navbar-nav';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for region().
+ *
+ * Customisations for regions.
+ */
+function kalabase_preprocess_region(&$vars) {
+  // Pass the site name through to the header so it can get printed in a deeper
+  // template.
+  if ($vars['region'] == 'header') {
+    $vars['site_name'] = \Drupal::config('system.site')->get('name');
   }
 }
 
