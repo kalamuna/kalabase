@@ -30,28 +30,6 @@ function kalabase_theme_suggestions_field_alter(&$suggestions, $vars) {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for menu().
- */
-function kalabase_preprocess_menu(&$vars) {
-  // Adding ids to the menu wrappers.
-  switch ($vars['menu_name']) {
-    case 'main':
-      $id = 'nav--primary';
-      break;
-
-    // Uncomment if using a secondary nav
-    // case 'SECONDARYNAVBLOCK':
-    //   $id = 'nav--secondary';
-    //   break;
-  }
-
-  if (isset($id)) {
-    $vars['attributes']['id'] = $id;
-    $vars['attributes']['class'][] = 'navbar-nav';
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK() for region().
  *
  * Customisations for regions.
