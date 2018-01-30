@@ -54,7 +54,15 @@ function kalabase_preprocess_breadcrumb(&$vars) {
 /**
  * Implements hook_page_attachments().
  */
-function kalabase_page_attachments(array &$attachments) {
+function kalabase_page_attachments_alter(array &$attachments) {
+  // Remove anyone else's attempt to add a favicon.
+  $links = $attachments['#attached']['html_head_link'];
+  foreach ($links as $key => $link) {
+    if ($link[0]['rel'] == 'shortcut icon') {
+      unset($attachments['#attached']['html_head_link'][$key]);
+    }
+  }
+
   // Add favicon tags to head.
   _kalabase_favicons($attachments);
 }
@@ -68,7 +76,7 @@ function _kalabase_favicons(array &$attachments) {
   $brand_color = $config->get('kalastatic_brand_color');
 
   // Get kalastatic.yaml settings so we can find the images.
-  $settings = kalastatic_get_settings();
+  $settings = kalastatic_get_settings('yaml');
   $dest = '/' . $settings['destination'];
 
   // Set up tags for the favicons.
