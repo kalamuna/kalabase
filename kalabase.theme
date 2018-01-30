@@ -76,7 +76,7 @@ function _kalabase_favicons(array &$attachments) {
   $brand_color = $config->get('kalastatic_brand_color');
 
   // Get kalastatic.yaml settings so we can find the images.
-  $settings = kalastatic_get_settings();
+  $settings = kalastatic_get_settings('yaml');
   $dest = '/' . $settings['destination'];
 
   // Set up tags for the favicons.
